@@ -4,7 +4,7 @@ Se pueden escribir muchas lineas ;)
 """
 import random
 
-
+"Este es mi primer edit"
 
 #DATOS
 print("Este es un bosquejo del esqueleto del código")
