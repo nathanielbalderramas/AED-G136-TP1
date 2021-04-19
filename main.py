@@ -1,8 +1,9 @@
-import random
 """
 Esto es lo que se conoce como un docstring, acá va una descripción breve del programa!.
 Se pueden escribir muchas lineas ;)
 """
+import random
+
 
 
 #DATOS
