@@ -1,17 +1,18 @@
-#TP1 - G136
+# TP1 - G136
 Ingerantes:
+
  - Balderramas, Nathaniel (92334)
  - Nosecuanto, Matías (XXXXX)
  - Silva, Gabriela (XXXXX)
 
-##Diagrama de flujo:
+## Diagrama de flujo:
 https://drive.google.com/file/d/1mJVUXZvPgSbAPZCmwILx8mNa6Ej4YvKT/view?usp=sharing
 
 
-##Consigna:
+## Consigna:
 https://uv.frc.utn.edu.ar/mod/assign/view.php?id=141066
 
-##Transcripto:
+## Transcripto:
 Implementación de un Juego de Dados: El Juego de Dos o Tres.
 
 Se solicita desarrollar un programa que permita implementar un juego de dados simple; el Juego de Dos o Tres. 
