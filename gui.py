@@ -3,11 +3,15 @@ import PySimpleGUI as sg
 import os
 
 """
+Este es un intento de implementar el juego de 2 o 3 con una interfaz gráfica.
+"""
+"""
 Nomenclatura General:
 RX -> Número de Ronda (R1, R2)
 PX -> Número de Jugador (P1, P2)
 DX -> Número de Dado (D1, D2, D3, D4)
 """
+
 dice_imgs = ["dice0.png",
              "dice1.png",
              "dice2.png",
@@ -19,10 +23,10 @@ dice_imgs = [os.path.join(os.getcwd(), "img", dice) for dice in dice_imgs]
 
 # Estructura de la GUI
 main_layout = [[sg.Text("El Juego de 2 o 3")],
-               [sg.Text("Jugador 1: "), sg.Text(size=(15, 1), key="-P1_name-"), sg.Text("   ", key="-P1_score-"),
-                sg.Button("Renombrar", key="-P1_rename-")],
-               [sg.Text("Jugador 2: "), sg.Text(size=(15, 1), key="-P2_name-"), sg.Text("   ", key="-P2_score-"),
-                sg.Button("Renombrar", key="-P2_rename-")],
+               [sg.Text("Jugador 1: "), sg.Text(size=(15, 1), key="-P1_name-"),
+                sg.Text("0", key="-P1_score-", size=(3, 1)), sg.Button("Renombrar", key="-P1_rename-")],
+               [sg.Text("Jugador 2: "), sg.Text(size=(15, 1), key="-P2_name-"),
+                sg.Text("0", key="-P2_score-", size=(3, 1)), sg.Button("Renombrar", key="-P2_rename-")],
                [sg.Text("RONDA 1:"), sg.Button("Start!", key="-R1_start-")],
                [sg.Text("Jugador 1: "),
                 sg.Image(filename=dice_imgs[0], key="-R1P1D1-"),
@@ -44,12 +48,12 @@ main_layout = [[sg.Text("El Juego de 2 o 3")],
                 sg.Image(filename=dice_imgs[0], key="-R2P2D2-"), sg.Image(filename=dice_imgs[0], key="-R2P2D3-"),
                 sg.Button("Roll", disabled=True, key="-R2P2_roll-")],
                [sg.Text("El ganador es: "), sg.Text(size=(15, 1), key="-WINNER-")],
-               [sg.Button("Exit!")]]
+               [sg.Button("Exit"), sg.Button("Restart")]]
 
 window = sg.Window("TP1", main_layout, size=(450, 450))
 
 # Inicializacion de variables de control
-P1_name, P2_name = "", ""
+P1_name, P2_name = "Jugador 1", "Jugador 2"
 R1_rolls, R2_rolls = 0, 0
 P1_score, P2_score = 0, 0
 R1P1_reroll, R1P2_reroll = 0, 0
@@ -150,6 +154,7 @@ while True:
         # Codigo de ronda 1, Jugador 2
         if R1P2D1 == R1P2D2 == R1P2D3:
             P2_score += 6
+            R2_rolls += 1
         elif R1P2D1 == R1P2D2:
             R1P2_reroll = "-R1P2D3-"
             R1P2_compare = R1P2D1
@@ -317,6 +322,42 @@ while True:
         window["-R2P2_roll-"].update(disabled=True)
         window["-P2_score-"].update(P2_score)
         R2_rolls += 1
+
+    if event == "Restart":
+        # restart variables and score
+        R1_rolls, R2_rolls = 0, 0
+        P1_score, P2_score = 0, 0
+        R1P1_reroll, R1P2_reroll = 0, 0
+        R2P1_par, R2P2_par = None, None
+
+        # restart dice images
+        window["-R1P1D1-"].update(dice_imgs[0])
+        window["-R1P1D2-"].update(dice_imgs[0])
+        window["-R1P1D3-"].update(dice_imgs[0])
+        window["-R1P2D1-"].update(dice_imgs[0])
+        window["-R1P2D2-"].update(dice_imgs[0])
+        window["-R1P2D3-"].update(dice_imgs[0])
+        window["-R2P1D1-"].update(dice_imgs[0])
+        window["-R2P1D2-"].update(dice_imgs[0])
+        window["-R2P1D3-"].update(dice_imgs[0])
+        window["-R2P2D1-"].update(dice_imgs[0])
+        window["-R2P2D2-"].update(dice_imgs[0])
+        window["-R2P2D3-"].update(dice_imgs[0])
+
+        # restart buttons
+        window["-R1_start-"].update(disabled=False)
+        window["-R1P1_roll-"].update(disabled=True)
+        window["-R1P1_reroll-"].update(disabled=True)
+        window["-R1P2_roll-"].update(disabled=True)
+        window["-R1P2_reroll-"].update(disabled=True)
+        window["-R2_start-"].update(disabled=True)
+        window["-R2P1_roll-"].update(disabled=True)
+        window["-R2P2_roll-"].update(disabled=True)
+
+        # restart score and winner
+        window["-P1_score-"].update(0)
+        window["-P2_score-"].update(0)
+        window["-WINNER-"].update("")
 
     if event == "Exit!":
         break
