@@ -1,8 +1,8 @@
 # TP1 - G136
 Integrantes:
 
+ - Ávila, Matias (XXXXX)
  - Balderramas, Nathaniel (92334)
- - Nosecuanto, Matías (XXXXX)
  - Silva, Gabriela (XXXXX)
 
 ## Diagrama de flujo:
