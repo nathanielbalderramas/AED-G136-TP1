@@ -3,7 +3,7 @@ Integrantes:
 
  - Ávila, Matias (XXXXX)
  - Balderramas, Nathaniel (92334)
- - Silva, Gabriela (XXXXX)
+ - Silva, Gabriela (92708)
 
 ## Diagrama de flujo:
 https://drive.google.com/file/d/1mJVUXZvPgSbAPZCmwILx8mNa6Ej4YvKT/view?usp=sharing
