@@ -30,6 +30,7 @@ main_layout = [[sg.Text("El Juego de 2 o 3"), sg.Text(size=(10, 1)), sg.Text("Cu
                 sg.Text("0", key="-P1_score-", size=(3, 1)), sg.Button("Renombrar", key="-P1_rename-")],
                [sg.Text("Jugador 2: "), sg.Text(size=(15, 1), key="-P2_name-"),
                 sg.Text("0", key="-P2_score-", size=(3, 1)), sg.Button("Renombrar", key="-P2_rename-")],
+               [],
                [sg.Text("RONDA 1:"), sg.Button("Start!", key="-R1_start-")],
                [sg.Text("Jugador 1: "),
                 sg.Image(filename=dice_imgs[0], key="-R1P1D1-"),
@@ -43,6 +44,7 @@ main_layout = [[sg.Text("El Juego de 2 o 3"), sg.Text(size=(10, 1)), sg.Text("Cu
                 sg.Image(filename=dice_imgs[0], key="-R1P2D3-"),
                 sg.Button("Roll", disabled=True, key="-R1P2_roll-"),
                 sg.Button("ReRoll", disabled=True, key="-R1P2_reroll-")],
+               [],
                [sg.Text("RONDA 2:"), sg.Button("Start!", key="-R2_start-", disabled=True)],
                [sg.Text("Jugador 1: "), sg.Image(filename=dice_imgs[0], key="-R2P1D1-"),
                 sg.Image(filename=dice_imgs[0], key="-R2P1D2-"), sg.Image(filename=dice_imgs[0], key="-R2P1D3-"),
@@ -50,6 +52,7 @@ main_layout = [[sg.Text("El Juego de 2 o 3"), sg.Text(size=(10, 1)), sg.Text("Cu
                [sg.Text("Jugador 2: "), sg.Image(filename=dice_imgs[0], key="-R2P2D1-"),
                 sg.Image(filename=dice_imgs[0], key="-R2P2D2-"), sg.Image(filename=dice_imgs[0], key="-R2P2D3-"),
                 sg.Button("Roll", disabled=True, key="-R2P2_roll-")],
+               [],
                [sg.Text("El ganador es: "), sg.Text(size=(15, 1), key="-WINNER-")],
                [sg.Button("Exit"), sg.Button("Restart")]]
 
@@ -362,7 +365,7 @@ while True:
         window["-P2_score-"].update(0)
         window["-WINNER-"].update("")
 
-    if event == "Exit!":
+    if event == "Exit":
         break
     if event == sg.WIN_CLOSED:
         break
