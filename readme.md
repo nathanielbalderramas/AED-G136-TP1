@@ -20,7 +20,7 @@ La consigna completa puede encontrarse en: https://uv.frc.utn.edu.ar/mod/assign/
 
 A continuación, un breve transcripto resumido de la consigna.
 
-Implementación de un Juego de Dados: *El Juego de Dos o Tres*.
+### Implementación de un Juego de Dados: *El Juego de Dos o Tres*.
 
 Se solicita desarrollar un programa que permita implementar un juego de dados simple; "el Juego de Dos o Tres". 
 
