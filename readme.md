@@ -7,12 +7,12 @@ Integrantes:
 
 ## Contenido del repositorio
  - **readme.md** este documento
- - **main.py** el programa final a entregar
  - **diagram.drawio** versión editable del diagrama de flujo del programa
  - **diagram.svg** versión vectorizada del diagrama de flujo del programa
+ - **main.py** el programa final a entregar
+ - **Pruebas.py** versión alternativa del programa, sin tiradas randomizadas para debugging
  - **gui.py** versión alternativa del programa implementando una interfaz gráfica
  - **2o3.exe** versión ejecutable de gui.py para evitar problemas de dependencias
- - **Pruebas.py** versión alternativa del programa, sin tiradas randomizadas para debugging
 
 
 ## Consigna:
