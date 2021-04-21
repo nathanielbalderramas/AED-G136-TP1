@@ -5,14 +5,21 @@ Integrantes:
  - Balderramas, Nathaniel (92334)
  - Silva, Gabriela (92708)
 
-## Diagrama de flujo:
-https://drive.google.com/file/d/1mJVUXZvPgSbAPZCmwILx8mNa6Ej4YvKT/view?usp=sharing
+## Contenido del repositorio
+ - **readme.md** este documento
+ - **main.py** el programa final a entregar
+ - **diagram.drawio** versión editable del diagrama de flujo del programa
+ - **diagram.svg** versión vetorizada del diagrama de flujo del programa
+ - **gui.py** versión alternativa del programa implementando una interfaz gráfica
+ - **2o3.exe** versión ejecutable de gui.py para evitar problemas de dependencias
+ - **Pruebas.py** versión alternativa del programa, sin tiradas randomizadas para debugging
 
 
 ## Consigna:
-https://uv.frc.utn.edu.ar/mod/assign/view.php?id=141066
+La consigna completa puede encontrarse en: https://uv.frc.utn.edu.ar/mod/assign/view.php?id=141066
 
-## Transcripto:
+A continuación, un breve transcripto resumido de la consigna.
+
 Implementación de un Juego de Dados: *El Juego de Dos o Tres*.
 
 Se solicita desarrollar un programa que permita implementar un juego de dados simple; "el Juego de Dos o Tres". 
