@@ -5,8 +5,5 @@
 /misc.xml
 /G136-TP1.iml
 /__pycache__
-/*.spec
-/build
-/dist
-/.idea/build.sh
+/build.sh
 /inspectionProfiles
