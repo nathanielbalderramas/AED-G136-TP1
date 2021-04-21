@@ -12,6 +12,9 @@ PX -> Número de Jugador (P1, P2)
 DX -> Número de Dado (D1, D2, D3, D4)
 """
 
+theme = random.choice(sg.theme_list())
+sg.theme(theme)
+
 dice_imgs = ["dice0.png",
              "dice1.png",
              "dice2.png",
@@ -22,7 +25,7 @@ dice_imgs = ["dice0.png",
 dice_imgs = [os.path.join(os.getcwd(), "img", dice) for dice in dice_imgs]
 
 # Estructura de la GUI
-main_layout = [[sg.Text("El Juego de 2 o 3")],
+main_layout = [[sg.Text("El Juego de 2 o 3"), sg.Text(size=(10, 1)), sg.Text("Current theme is: {}".format(theme))],
                [sg.Text("Jugador 1: "), sg.Text(size=(15, 1), key="-P1_name-"),
                 sg.Text("0", key="-P1_score-", size=(3, 1)), sg.Button("Renombrar", key="-P1_rename-")],
                [sg.Text("Jugador 2: "), sg.Text(size=(15, 1), key="-P2_name-"),
