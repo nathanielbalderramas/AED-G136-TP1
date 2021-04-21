@@ -8,5 +8,5 @@
 /*.spec
 /build
 /dist
-
+/.idea
 /inspectionProfiles
