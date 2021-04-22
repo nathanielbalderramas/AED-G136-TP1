@@ -44,8 +44,6 @@ if dado1 == dado2 and dado1 == dado3:
     print(jugador1, 'obtiene 6 puntos')
 elif dado1 == dado2:
     puntaje1 = puntaje1 + 3
-    relanzar = True   #AGREGAR
-    comparar = dado1  #AGREGAR
     print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')   #Quitar desde (01)
     input('\nPresione Enter para volver a lanzar el dado distinto')
     dado3 = random.randint(1, 6)
