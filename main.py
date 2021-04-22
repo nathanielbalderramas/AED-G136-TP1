@@ -21,200 +21,211 @@ if reglas == "s" or reglas == "S":
     print(reglamento)
 
 # Carga de nombre de jugadores y comienzo del juego
-jugador1 = input('Jugador 1, ingrese su nombre: ')
-jugador2 = input('Jugador 2, ingrese su nombre: ')
-input('\nEl juego está listo. Presione Enter para comenzar')
+jugador1 = input("Jugador 1, ingrese su nombre: ")
+jugador2 = input("Jugador 2, ingrese su nombre: ")
+input("\nEl juego está listo. Presione Enter para comenzar")
 puntaje1, puntaje2 = 0, 0
 
 # Mensaje 1ra ronda, Jugador 1
 print("-"*60)
 print("INICIO RONDA 1")
 print("-"*60)
-input("Turno Jugador 1: presione enter para lanzar los dados...")
-print("*Ruido de dados...* [USE SU IMAGINACIÓN >:| ]")
-dado1 = random.randint(1,6)
-dado2 = random.randint(1,6)
-dado3 = random.randint(1,6)
-print("Tus dados son: [{}] [{}] [{}]".format(dado1, dado2, dado3))
-input("")
+input("Turno de {}: presione enter para lanzar los dados...".format(jugador1))
+print("...\n*Ruido de dados...* [USE SU IMAGINACIÓN >:| ]\n...")
+dado1 = random.randint(1, 6)
+dado2 = random.randint(1, 6)
+dado3 = random.randint(1, 6)
+input("Tus dados son: [{}] [{}] [{}]".format(dado1, dado2, dado3))
+
+
 
 # Proceso: Cálculo de puntaje jugador 1 primera ronda
+relanzar = False
 if dado1 == dado2 and dado1 == dado3:
     puntaje1 += 6
-    print(jugador1, 'obtiene 6 puntos')
+    print(jugador1, "obtiene 6 puntos")
 elif dado1 == dado2:
-    puntaje1 = puntaje1 + 3
-    print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')   #Quitar desde (01)
-    input('\nPresione Enter para volver a lanzar el dado distinto')
-    dado3 = random.randint(1, 6)
-    print('\nEl tercer dado quedó en:', dado3)
-    if dado3 == dado1:
-        puntaje1 = puntaje1 + 3
-        print(jugador1, 'obtiene 3 puntos')                                         #Quitar hasta (01)
+    puntaje1 += 3
+    relanzar = True
+    comparar = dado1
 elif dado1 == dado3:
-    puntaje1 = puntaje1 + 3
-    print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto') #Quitar desde (02)
-    input('\nPresione Enter para volver a lanzar el dado distinto')
-    dado2 = random.randint(1, 6)
-    print('\nEl segundo dado quedó en:', dado2)
-    if dado2 == dado1:
-        puntaje1 = puntaje1 + 3
-        print(jugador1, 'obtiene 3 puntos')                                       #Quitar hasta (02)
+    puntaje1 += 3
+    relanzar = True
+    comparar = dado1
 elif dado2 == dado3:
-    puntaje1 = puntaje1 + 3
-    print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')  #Quitar desde (03)
-    input('\nPresione Enter para volver a lanzar el dado distinto')
-    dado1 = random.randint(1, 6)
-    print('\nEl primer dado quedó en:', dado1)
-    if dado1 == dado2:
-        puntaje1 = puntaje1 + 3
-        print(jugador1, 'obtiene 3 puntos')                                         #Quitar hasta (03)
+    puntaje1 += 3
+    relanzar = True
+    comparar = dado2
 
+if relanzar:
+    print("Tienes dos dados iguales, obtienes 3 puntos.")
+    input("Presiona enter para volver a tirar el dado distinto: ")
+    dado4 = random.randint(1, 6)
+    print("Tu dado salió: [{}]".format(dado4))
+    if dado4 == comparar:
+        print("Sumas 3 puntos más!")
+        puntaje1 += 3
 
-print('\nEn esta ronda', jugador1, 'obtuvo', puntaje1, 'puntos')
+print("\nFin de la jugada. En esta ronda", jugador1, "obtuvo", puntaje1, "puntos.")
 
 # Jugador 2
-print('\nTurno de ', jugador2)
-input('\nPresione Enter para lanzar el primer dado')
+print("-"*60)
+input("Turno {}: presione enter para lanzar los dados...".format(jugador2))
+print("...\n*Ruido de dados...* [USE SU IMAGINACIÓN >:| ]\n...")
 dado1 = random.randint(1, 6)
-print('\nEl primer dado quedó en:', dado1)
-input('\nPresione Enter para lanzar el segundo dado')
 dado2 = random.randint(1, 6)
-print('\nEl segundo dado quedó en:', dado2)
-input('\nPresione Enter para lanzar el tercer dado')
 dado3 = random.randint(1, 6)
-print('\nEl tercer dado quedó en:', dado3)
+input("Tus dados son: [{}] [{}] [{}]".format(dado1, dado2, dado3))
 
 # Proceso: Cálculo de puntaje jugador 2 primera ronda
+relanzar = False
 if dado1 == dado2 and dado1 == dado3:
-    puntaje2 = puntaje2 + 6
-    print(jugador2, 'obtiene 6 puntos')
-else:
-    if dado1 == dado2:
-        puntaje2 = puntaje2 + 3
-        print(jugador2, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-        input('\nPresione Enter para volver a lanzar el dado distinto')
-        dado3 = random.randint(1, 6)
-        print('\nEl tercer dado quedó en:', dado3)
-        if dado3 == dado1:
-            puntaje2 = puntaje2 + 3
-            print(jugador2, 'obtiene 3 puntos')
-    else:
-        if dado1 == dado3:
-            puntaje2 = puntaje2 + 3
-            print(jugador2, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-            input('\nPresione Enter para volver a lanzar el dado distinto')
-            dado2 = random.randint(1, 6)
-            print('\nEl segundo dado quedó en:', dado2)
-            if dado2 == dado1:
-                puntaje2 = puntaje2 + 3
-                print(jugador2, 'obtiene 3 puntos')
-        else:
-            if dado2 == dado3:
-                puntaje2 = puntaje2 + 3
-                print(jugador2, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-                input('\nPresione Enter para volver a lanzar el dado distinto')
-                dado1 = random.randint(1, 6)
-                print('\nEl primer dado quedó en:', dado1)
-                if dado1 == dado2:
-                    puntaje2 = puntaje2 + 3
-                    print(jugador2, 'obtiene 3 puntos')
-print('En esta ronda', jugador2, 'obtuvo', puntaje2, 'puntos')
+    puntaje2 += 6
+    print(jugador2, "obtiene 6 puntos")
+elif dado1 == dado2:
+    puntaje2 += 3
+    relanzar = True
+    comparar = dado1
+elif dado1 == dado3:
+    puntaje2 += 3
+    relanzar = True
+    comparar = dado1
+elif dado2 == dado3:
+    puntaje2 += 3
+    relanzar = True
+    comparar = dado2
 
-print('\nPuntajes Parciales: ', jugador1, 'tiene', puntaje1, 'puntos y', jugador2, 'tiene', puntaje2, 'puntos')
-input('\nPresione enter para pasar a la Segunda Ronda')
+if relanzar:
+    print("Tienes dos dados iguales, obtienes 3 puntos.")
+    input("\nPresiona enter para volver a tirar el dado distinto: ")
+    dado4 = random.randint(1, 6)
+    print("Tu dado salió: [{}]".format(dado4))
+    if dado4 == comparar:
+        print("Sumas 3 puntos más!")
+        puntaje2 += 3
+
+
+print("\nFin de la jugada. En esta ronda", jugador2, "obtuvo", puntaje2, "puntos.")
+
+print("-"*60)
+print("Puntajes Parciales: ", jugador1, "tiene", puntaje1, "puntos y", jugador2, "tiene", puntaje2, "puntos")
+input("Presione enter para pasar a la Segunda Ronda")
+
 # Segunda Ronda
 # Turno de Jugador1
+print("\n"+"-"*60)
+print("INICIO SEGUNDA RONDA")
+print("-"*60)
+print("Turno de {}".format(jugador1))
 
-print('\nSegunda Ronda\n\nTurno de ', jugador1)
-print('Debe apostar por resultado par o impar')
-print('Si apuesta a par ingrese cualquier número par, si apuesta a impar ingrese cualquier número impar')
-apuesta1 = int(input('Su apuesta: '))
-if apuesta1 % 2 == 0:
-    print(jugador1, 'apuesta a resultado par')
+# Apuesta jugador 1
+print("Debe apostar por resultado par o impar.")
+apuesta1 = input("¿Desea apostar por par? (s/n)\n")
+if apuesta1 == "s" or apuesta1 == "S":
+    apuesta1 = 0
+    print(jugador1, "apuesta por par...")
 else:
-    print(jugador1, 'apuesta a resultado impar')
+    apuesta1 = 1
+    print(jugador1, "apuesta por impar...")
 
-
-input('\nPresione Enter para lanzar el primer dado')
+print("-"*60)
+input("Presione enter para lanzar los dados...")
+print("...\n*Ruido de dados...* [USE SU IMAGINACIÓN >:| ]\n...")
 dado1 = random.randint(1, 6)
-print('\nEl primer dado quedó en:', dado1)
-input('\nPresione Enter para lanzar el segundo dado')
 dado2 = random.randint(1, 6)
-print('\nEl segundo dado quedó en:', dado2)
-input('\nPresione Enter para lanzar el tercer dado')
 dado3 = random.randint(1, 6)
-print('\nEl tercer dado quedó en:', dado3)
+input("Tus dados son: [{}] [{}] [{}]".format(dado1, dado2, dado3))
 
 # Proceso: Cálculo de puntaje jugador 1 Segunda Ronda
 mayor1 = max(dado1, dado2, dado3)
 menor1 = min(dado1, dado2, dado3)
 suma1 = dado1 + dado2 + dado3
 if suma1 % 2 == 0:
-    print('La suma de los dados es par!')
+    print("\nLa suma de los dados es par!")
 else:
-    print('La suma de los dados es impar!')
-if suma1 % 2 == apuesta1 % 2:
-    puntaje1 = puntaje1 + mayor1
-    print(jugador1, 'obtiene', mayor1, 'puntos')
-    if dado1 % 2 == apuesta1 % 2 and dado2 % 2 == apuesta1 % 2 and dado3 % 2 == apuesta1 % 2:
-        print('Todos los dados coinciden con la apuesta!!', jugador1, 'duplica su puntaje')
-        puntaje1 = puntaje1 * 2
-        print(jugador1, 'tiene', puntaje1, 'puntos')
+    print("\nLa suma de los dados es impar!")
+if suma1 % 2 == apuesta1:
+    puntaje1 += mayor1
+    print(jugador1, "obtiene", mayor1, "puntos")
+    if dado1 % 2 == apuesta1 and dado2 % 2 == apuesta1 and dado3 % 2 == apuesta1:
+        print("Todos los dados coinciden con la apuesta!", jugador1, "duplica su puntaje!!!")
+        puntaje1 *= 2
+        print(jugador1, "ahora tiene", puntaje1, "puntos")
 else:
-    puntaje1 = puntaje1 - menor1
-    print(jugador1, 'pierde', menor1, 'puntos')
+    puntaje1 -= menor1
+    print(jugador1, "pierde", menor1, "puntos")
 
 # Turno de Jugador2
-print('\n\nTurno de ', jugador2)
-input('Presione Enter para continuar')
-print('Debe apostar por resulado par o impar')
-print('Si apuesta a par ingrese cualquier número par, si apuesta a impar ingrese cualquier número impar')
-apuesta2 = int(input('Su apuesta: '))
-if apuesta2 % 2 == 0:
-    print(jugador2, 'apuesta a resultado par')
+print("-"*60)
+print("Turno de {}".format(jugador2))
+
+# Apuesta jugador 2
+print("Debe apostar por resultado par o impar.")
+apuesta2 = input("¿Desea apostar por par? (s/n)\n")
+if apuesta2 == "s" or apuesta2 == "S":
+    apuesta2 = 0
+    print(jugador2, "apuesta por par...")
 else:
-    print(jugador2, 'apuesta a resultado impar')
+    apuesta2 = 1
+    print(jugador2, "apuesta por impar...")
 
-input('\nPresione Enter para lanzar el primer dado')
+print("-"*60)
+input("Presione enter para lanzar los dados...")
+print("...\n*Ruido de dados...* [USE SU IMAGINACIÓN >:| ]\n...")
 dado1 = random.randint(1, 6)
-print('\nEl primer dado quedó en:', dado1)
-input('\nPresione Enter para lanzar el segundo dado')
 dado2 = random.randint(1, 6)
-print('\nEl segundo dado quedó en:', dado2)
-input('\nPresione Enter para lanzar el tercer dado')
 dado3 = random.randint(1, 6)
-print('\nEl tercer dado quedó en:', dado3)
+input("Tus dados son: [{}] [{}] [{}]".format(dado1, dado2, dado3))
 
-# Proceso: Cálculo de puntaje jugador 2 Segunda Ronda
+# Proceso: Cálculo de puntaje jugador 1 Segunda Ronda
 mayor2 = max(dado1, dado2, dado3)
 menor2 = min(dado1, dado2, dado3)
 suma2 = dado1 + dado2 + dado3
 if suma2 % 2 == 0:
-    print('La suma de los dados es par!')
+    print("\nLa suma de los dados es par!")
 else:
-    print('La suma de los dados es impar!')
-if suma2 % 2 == apuesta2 % 2:
-    puntaje2 = puntaje2 + mayor2
-    print(jugador2, 'obtiene', mayor2, 'puntos')
-    if dado1 % 2 == apuesta2 % 2 and dado2 % 2 == apuesta2 % 2 and dado3 % 2 == apuesta2 % 2:
-        print('Todos los dados coinciden con la apuesta!!', jugador2, 'duplica su puntaje')
-        puntaje2 = puntaje2 * 2
-        print(jugador2, 'tiene', puntaje2, 'puntos')
+    print("\nLa suma de los dados es impar!")
+if suma2 % 2 == apuesta2:
+    puntaje2 += mayor2
+    print(jugador2, "obtiene", mayor2, "puntos")
+    if dado1 % 2 == apuesta2 and dado2 % 2 == apuesta2 and dado3 % 2 == apuesta2:
+        print("Todos los dados coinciden con la apuesta!", jugador2, "duplica su puntaje!!!")
+        puntaje2 *= 2
+        print(jugador2, "ahora tiene", puntaje2, "puntos")
 else:
-    puntaje2 = puntaje2 - menor2
-    print(jugador2, 'pierde', menor2, 'puntos')
+    puntaje2 -= menor2
+    print(jugador2, "pierde", menor2, "puntos")
 
 # Resultado
-print('FIN DE LA PARTIDA')
-input('Presione Enter para ver los puntajes')
-print(jugador1, 'obtuvo', puntaje1, 'puntos y', jugador2, 'obtuvo', puntaje2, 'puntos')
+print("="*60)
+print("FIN DE LA PARTIDA")
+print("="*60)
+input("\nVeamos quien gano... Presione enter para continuar...\n")
+print("*"*60)
+print("*", jugador1, "obtuvo", puntaje1, "puntos y", jugador2, "obtuvo", puntaje2, "puntos")
 if puntaje1 == puntaje2:
-    print('El resultado es empate!')
+    print("* El resultado es empate! :/")
 else:
     if puntaje1 > puntaje2:
-        print('El ganador es', jugador1, '!!!')
+        print("* El ganador es", jugador1, "!!!")
     else:
-        print('El ganador es', jugador2, '!!!')
-print('\nGracias por jugar!\nHasta pronto!')
+        print("* El ganador es", jugador2, "!!!")
+print("*"*60)
+print("\nGracias por jugar!\nEsperamos que lo hayan disfrutado :D")
+
 # Créditos
+creditos = """
+(lease con voz en off...)
+
+Diseño: Equipo docente
+    -ing. Romina Teicher
+    -ing. Marcela Tartabini
+    -ing. Jorge Harach
+
+Ejecución: Grupo 136 
+    -Matías Avila (93599)
+    -Nathaniel Balderramas (92334)
+    -Gabriela Silva (92708)
+"""
+input("Presione enter para ver los créditos del juego...")
+print(creditos)
