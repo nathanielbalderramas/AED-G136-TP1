@@ -1,74 +1,89 @@
+"""
+Este codigo ha sido desarrollado por el grupo 136
+"""
+import random
+
 # Título, mensaje de bienvenida y reglas
-print('El juego de dos o tres')
-print('======================')
-print('\n¡Bienvenido!')
+titulo = """
++++++++++++++++++
++  El Juego de  +
++  Dos o Tres   +
++++++++++++++++++
+"""
+
+print(titulo)
 # Redactar Reglas de Juego
+
+reglamento = "Estas algún día van a ser las reglas del juego\n"
+
+reglas = input("Bienvenido! ¿Desea leer las reglas del juego antes de empezar? (S/N)\n")
+if reglas == "s" or reglas == "S":
+    print(reglamento)
 
 # Carga de nombre de jugadores y comienzo del juego
 jugador1 = input('Jugador 1, ingrese su nombre: ')
 jugador2 = input('Jugador 2, ingrese su nombre: ')
-start = input('\nPresione Enter para comenzar')
-import random
-puntaje1 = 0
-puntaje2 = 0
+input('\nEl juego está listo. Presione Enter para comenzar')
+puntaje1, puntaje2 = 0, 0
 
 # Mensaje 1ra ronda, Jugador 1
-print('Primera Ronda\nTurno de ', jugador1)
-start = input('\nPresione Enter para lanzar el primer dado')
-dado1 = random.randint(1, 6)
-print('\nEl primer dado quedó en:', dado1)
-start = input('\nPresione Enter para lanzar el segundo dado')
-dado2 = random.randint(1, 6)
-print('\nEl segundo dado quedó en:', dado2)
-start = input('\nPresione Enter para lanzar el tercer dado')
-dado3 = random.randint(1, 6)
-print('\nEl tercer dado quedó en:', dado3)
+print("-"*60)
+print("INICIO RONDA 1")
+print("-"*60)
+input("Turno Jugador 1: presione enter para lanzar los dados...")
+print("*Ruido de dados...* [USE SU IMAGINACIÓN >:| ]")
+dado1 = random.randint(1,6)
+dado2 = random.randint(1,6)
+dado3 = random.randint(1,6)
+print("Tus dados son: [{}] [{}] [{}]".format(dado1, dado2, dado3))
+input("")
 
 # Proceso: Cálculo de puntaje jugador 1 primera ronda
 if dado1 == dado2 and dado1 == dado3:
-    puntaje1 = puntaje1 + 6
+    puntaje1 += 6
     print(jugador1, 'obtiene 6 puntos')
-else:
+elif dado1 == dado2:
+    puntaje1 = puntaje1 + 3
+    relanzar = True   #AGREGAR
+    comparar = dado1  #AGREGAR
+    print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')   #Quitar desde (01)
+    input('\nPresione Enter para volver a lanzar el dado distinto')
+    dado3 = random.randint(1, 6)
+    print('\nEl tercer dado quedó en:', dado3)
+    if dado3 == dado1:
+        puntaje1 = puntaje1 + 3
+        print(jugador1, 'obtiene 3 puntos')                                         #Quitar hasta (01)
+elif dado1 == dado3:
+    puntaje1 = puntaje1 + 3
+    print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto') #Quitar desde (02)
+    input('\nPresione Enter para volver a lanzar el dado distinto')
+    dado2 = random.randint(1, 6)
+    print('\nEl segundo dado quedó en:', dado2)
+    if dado2 == dado1:
+        puntaje1 = puntaje1 + 3
+        print(jugador1, 'obtiene 3 puntos')                                       #Quitar hasta (02)
+elif dado2 == dado3:
+    puntaje1 = puntaje1 + 3
+    print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')  #Quitar desde (03)
+    input('\nPresione Enter para volver a lanzar el dado distinto')
+    dado1 = random.randint(1, 6)
+    print('\nEl primer dado quedó en:', dado1)
     if dado1 == dado2:
         puntaje1 = puntaje1 + 3
-        print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-        start = input('\nPresione Enter para volver a lanzar el dado distinto')
-        dado3 = random.randint(1, 6)
-        print('\nEl tercer dado quedó en:', dado3)
-        if dado3 == dado1:
-            puntaje1 = puntaje1 + 3
-            print(jugador1, 'obtiene 3 puntos')
-    else:
-        if dado1 == dado3:
-            puntaje1 = puntaje1 + 3
-            print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-            start = input('\nPresione Enter para volver a lanzar el dado distinto')
-            dado2 = random.randint(1, 6)
-            print('\nEl segundo dado quedó en:', dado2)
-            if dado2 == dado1:
-                puntaje1 = puntaje1 + 3
-                print(jugador1, 'obtiene 3 puntos')
-        else:
-            if dado2 == dado3:
-                puntaje1 = puntaje1 + 3
-                print(jugador1, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-                start = input('\nPresione Enter para volver a lanzar el dado distinto')
-                dado1 = random.randint(1, 6)
-                print('\nEl primer dado quedó en:', dado1)
-                if dado1 == dado2:
-                    puntaje1 = puntaje1 + 3
-                    print(jugador1, 'obtiene 3 puntos')
+        print(jugador1, 'obtiene 3 puntos')                                         #Quitar hasta (03)
+
+
 print('\nEn esta ronda', jugador1, 'obtuvo', puntaje1, 'puntos')
 
 # Jugador 2
 print('\nTurno de ', jugador2)
-start = input('\nPresione Enter para lanzar el primer dado')
+input('\nPresione Enter para lanzar el primer dado')
 dado1 = random.randint(1, 6)
 print('\nEl primer dado quedó en:', dado1)
-start = input('\nPresione Enter para lanzar el segundo dado')
+input('\nPresione Enter para lanzar el segundo dado')
 dado2 = random.randint(1, 6)
 print('\nEl segundo dado quedó en:', dado2)
-start = input('\nPresione Enter para lanzar el tercer dado')
+input('\nPresione Enter para lanzar el tercer dado')
 dado3 = random.randint(1, 6)
 print('\nEl tercer dado quedó en:', dado3)
 
@@ -80,7 +95,7 @@ else:
     if dado1 == dado2:
         puntaje2 = puntaje2 + 3
         print(jugador2, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-        start = input('\nPresione Enter para volver a lanzar el dado distinto')
+        input('\nPresione Enter para volver a lanzar el dado distinto')
         dado3 = random.randint(1, 6)
         print('\nEl tercer dado quedó en:', dado3)
         if dado3 == dado1:
@@ -90,7 +105,7 @@ else:
         if dado1 == dado3:
             puntaje2 = puntaje2 + 3
             print(jugador2, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-            start = input('\nPresione Enter para volver a lanzar el dado distinto')
+            input('\nPresione Enter para volver a lanzar el dado distinto')
             dado2 = random.randint(1, 6)
             print('\nEl segundo dado quedó en:', dado2)
             if dado2 == dado1:
@@ -100,7 +115,7 @@ else:
             if dado2 == dado3:
                 puntaje2 = puntaje2 + 3
                 print(jugador2, 'obtiene 3 puntos y vuelve a tirar el dado que dio distinto')
-                start = input('\nPresione Enter para volver a lanzar el dado distinto')
+                input('\nPresione Enter para volver a lanzar el dado distinto')
                 dado1 = random.randint(1, 6)
                 print('\nEl primer dado quedó en:', dado1)
                 if dado1 == dado2:
@@ -109,7 +124,7 @@ else:
 print('En esta ronda', jugador2, 'obtuvo', puntaje2, 'puntos')
 
 print('\nPuntajes Parciales: ', jugador1, 'tiene', puntaje1, 'puntos y', jugador2, 'tiene', puntaje2, 'puntos')
-start = input('\nPresione enter para pasar a la Segunda Ronda')
+input('\nPresione enter para pasar a la Segunda Ronda')
 # Segunda Ronda
 # Turno de Jugador1
 
@@ -121,13 +136,15 @@ if apuesta1 % 2 == 0:
     print(jugador1, 'apuesta a resultado par')
 else:
     print(jugador1, 'apuesta a resultado impar')
-start = input('\nPresione Enter para lanzar el primer dado')
+
+
+input('\nPresione Enter para lanzar el primer dado')
 dado1 = random.randint(1, 6)
 print('\nEl primer dado quedó en:', dado1)
-start = input('\nPresione Enter para lanzar el segundo dado')
+input('\nPresione Enter para lanzar el segundo dado')
 dado2 = random.randint(1, 6)
 print('\nEl segundo dado quedó en:', dado2)
-start = input('\nPresione Enter para lanzar el tercer dado')
+input('\nPresione Enter para lanzar el tercer dado')
 dado3 = random.randint(1, 6)
 print('\nEl tercer dado quedó en:', dado3)
 
@@ -152,7 +169,7 @@ else:
 
 # Turno de Jugador2
 print('\n\nTurno de ', jugador2)
-start = input('Presione Enter para continuar')
+input('Presione Enter para continuar')
 print('Debe apostar por resulado par o impar')
 print('Si apuesta a par ingrese cualquier número par, si apuesta a impar ingrese cualquier número impar')
 apuesta2 = int(input('Su apuesta: '))
@@ -161,13 +178,13 @@ if apuesta2 % 2 == 0:
 else:
     print(jugador2, 'apuesta a resultado impar')
 
-start = input('\nPresione Enter para lanzar el primer dado')
+input('\nPresione Enter para lanzar el primer dado')
 dado1 = random.randint(1, 6)
 print('\nEl primer dado quedó en:', dado1)
-start = input('\nPresione Enter para lanzar el segundo dado')
+input('\nPresione Enter para lanzar el segundo dado')
 dado2 = random.randint(1, 6)
 print('\nEl segundo dado quedó en:', dado2)
-start = input('\nPresione Enter para lanzar el tercer dado')
+input('\nPresione Enter para lanzar el tercer dado')
 dado3 = random.randint(1, 6)
 print('\nEl tercer dado quedó en:', dado3)
 
@@ -192,7 +209,7 @@ else:
 
 # Resultado
 print('FIN DE LA PARTIDA')
-start = input('Presione Enter para ver los puntajes')
+input('Presione Enter para ver los puntajes')
 print(jugador1, 'obtuvo', puntaje1, 'puntos y', jugador2, 'obtuvo', puntaje2, 'puntos')
 if puntaje1 == puntaje2:
     print('El resultado es empate!')

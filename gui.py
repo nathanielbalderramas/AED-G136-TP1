@@ -110,7 +110,7 @@ while True:
             P1_score += 6
             R1_rolls += 1
         elif R1P1D1 == R1P1D2:
-            R1P1_reroll = "-R1P1D3-"
+            R1P1_reroll = True
             R1P1_compare = R1P1D1
         elif R1P1D1 == R1P1D3:
             R1P1_reroll = "-R1P1D2-"
