@@ -26,9 +26,11 @@ jugador2 = input("Jugador 2, ingrese su nombre: ")
 input("\nEl juego está listo. Presione Enter para comenzar")
 puntaje1, puntaje2 = 0, 0
 
-# Mensaje 1ra ronda, Jugador 1
+# PRIMERA RONDA
 print("-"*60)
 print("INICIO RONDA 1")
+
+# Jugador 1
 print("-"*60)
 input("Turno de {}: presione enter para lanzar los dados...".format(jugador1))
 print("...\n*Ruido de dados...* [USE SU IMAGINACIÓN >:| ]\n...")
@@ -37,10 +39,8 @@ dado2 = random.randint(1, 6)
 dado3 = random.randint(1, 6)
 input("Tus dados son: [{}] [{}] [{}]".format(dado1, dado2, dado3))
 
-
-
 # Proceso: Cálculo de puntaje jugador 1 primera ronda
-relanzar = False
+relanzar, comparar = False, None
 if dado1 == dado2 and dado1 == dado3:
     puntaje1 += 6
     print(jugador1, "obtiene 6 puntos")
@@ -78,7 +78,7 @@ dado3 = random.randint(1, 6)
 input("Tus dados son: [{}] [{}] [{}]".format(dado1, dado2, dado3))
 
 # Proceso: Cálculo de puntaje jugador 2 primera ronda
-relanzar = False
+relanzar, comparar = False, None
 if dado1 == dado2 and dado1 == dado3:
     puntaje2 += 6
     print(jugador2, "obtiene 6 puntos")
@@ -107,14 +107,16 @@ if relanzar:
 
 print("\nFin de la jugada. En esta ronda", jugador2, "obtuvo", puntaje2, "puntos.")
 
+# Puntajes parciales
 print("-"*60)
 print("Puntajes Parciales: ", jugador1, "tiene", puntaje1, "puntos y", jugador2, "tiene", puntaje2, "puntos")
 input("Presione enter para pasar a la Segunda Ronda")
 
 # Segunda Ronda
-# Turno de Jugador1
 print("\n"+"-"*60)
 print("INICIO SEGUNDA RONDA")
+
+# Jugador1
 print("-"*60)
 print("Turno de {}".format(jugador1))
 
@@ -124,9 +126,12 @@ apuesta1 = input("¿Desea apostar por par? (s/n)\n")
 if apuesta1 == "s" or apuesta1 == "S":
     apuesta1 = 0
     print(jugador1, "apuesta por par...")
-else:
+elif apuesta1 == "n" or apuesta1 == "N":
     apuesta1 = 1
     print(jugador1, "apuesta por impar...")
+else:
+    apuesta1 = 1
+    print("No se entendió su apuesta. Por defecto", jugador1, "apuesta por impar...")
 
 print("-"*60)
 input("Presione enter para lanzar los dados...")
@@ -155,7 +160,7 @@ else:
     puntaje1 -= menor1
     print(jugador1, "pierde", menor1, "puntos")
 
-# Turno de Jugador2
+# Jugador2
 print("-"*60)
 print("Turno de {}".format(jugador2))
 
@@ -165,9 +170,12 @@ apuesta2 = input("¿Desea apostar por par? (s/n)\n")
 if apuesta2 == "s" or apuesta2 == "S":
     apuesta2 = 0
     print(jugador2, "apuesta por par...")
-else:
+elif apuesta2 == "n" or apuesta2 == "N":
     apuesta2 = 1
     print(jugador2, "apuesta por impar...")
+else:
+    apuesta2 = 1
+    print("No se entendió su apuesta. Por defecto", jugador2, "apuesta por impar...")
 
 print("-"*60)
 input("Presione enter para lanzar los dados...")
@@ -205,11 +213,10 @@ print("*"*60)
 print("*", jugador1, "obtuvo", puntaje1, "puntos y", jugador2, "obtuvo", puntaje2, "puntos")
 if puntaje1 == puntaje2:
     print("* El resultado es empate! :/")
+elif puntaje1 > puntaje2:
+    print("* El ganador es", jugador1, "!!!")
 else:
-    if puntaje1 > puntaje2:
-        print("* El ganador es", jugador1, "!!!")
-    else:
-        print("* El ganador es", jugador2, "!!!")
+    print("* El ganador es", jugador2, "!!!")
 print("*"*60)
 print("\nGracias por jugar!\nEsperamos que lo hayan disfrutado :D")
 
