@@ -14,7 +14,21 @@ titulo = """
 print(titulo)
 # Redactar Reglas de Juego
 
-reglamento = "Estas algún día van a ser las reglas del juego\n"
+reglamento = """
+Este juego involucra a dos jugadores, requiere tres dados y consta de dos rondas.
+
+En la primera ronda cada jugador tirará sus tres dados, y se evaluará si algunos de estos son iguales entre si o no.
+Si hay 3 dados iguales, el jugador suma 6 puntos. Si hay dos dados iguales el jugador suma 3 puntos y tiene la 
+posibilidad de relanzar el dado distinto para sumar otros 3 puntos si logra igualar a los demás dados.
+Si no hay dados iguales, entonces el jugador no suma ningún punto.
+
+En la segunda ronda cada jugador debe realizar una apuesta por par o impar y luego tirar sus 3 dados.
+Si la suma de los dados es de la paridad apostada, el jugador sumara una cantidad de puntos igual al dado de mayor
+valor obtenido. Si además todos los dados resultan de la paridad apostada, se duplicará su puntaje.
+Si en cambio, la suma de los dados no es de la paridad elejida, entonces el jugador perderá puntaje igual
+al dado de menor valor.
+
+Gana el juego aquel jugador que obtenga la mayor cantidad de puntos!"""
 
 reglas = input("Bienvenido! ¿Desea leer las reglas del juego antes de empezar? (S/N)\n")
 if reglas == "s" or reglas == "S":
